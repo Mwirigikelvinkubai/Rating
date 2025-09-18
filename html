@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rate Our Service</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+    h1 { color: #333; }
+    .stars button {
+      font-size: 30px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: lightgray;
+      transition: color 0.2s;
+    }
+    .stars button:hover,
+    .stars button.selected {
+      color: gold;
+    }
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+    button.submit-btn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button.submit-btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Rate Our Service</h1>
+    <p>We’d love your feedback!</p>
+
+    <div class="stars">
+      <button data-value="1">★</button>
+      <button data-value="2">★</button>
+      <button data-value="3">★</button>
+      <button data-value="4">★</button>
+      <button data-value="5">★</button>
+    </div>
+
+    <form id="ratingForm" action="https://docs.google.com/forms/d/e/1FAIpQLSceg-c43TV-8Nypmkdu4jzn3nYdpqu7BaeIVlp4onWdfKqV6w/formResponse" method="POST" target="hidden_iframe">
+      <input type="hidden" name="entry.1340388905" id="ratingInput">
+      <textarea name="entry.1203803149" id="comments" placeholder="Optional comments..."></textarea>
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+
+    <p id="thankyou" style="display:none; color: green; margin-top:10px;">Thank you for your feedback!</p>
+  </div>
+
+  <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+  <script>
+    let selectedRating = 0;
+    const stars = document.querySelectorAll(".stars button");
+    stars.forEach(star => {
+      star.addEventListener("click", () => {
+        selectedRating = star.getAttribute("data-value");
+        document.getElementById("ratingInput").value = selectedRating;
+        stars.forEach(s => s.classList.remove("selected"));
+        for(let i=0;i<selectedRating;i++){ stars[i].classList.add("selected"); }
+      });
+    });
+
+    const form = document.getElementById("ratingForm");
+    form.addEventListener("submit", () => {
+      if(selectedRating === 0){ 
+        alert("Please select a rating before submitting."); 
+        event.preventDefault(); 
+        return; 
+      }
+      setTimeout(() => {
+        document.getElementById("thankyou").style.display = "block";
+        form.reset();
+        stars.forEach(s => s.classList.remove("selected"));
+        selectedRating = 0;
+      }, 500);
+    });
+  </script>
+</body>
+</html>
