@@ -1,0 +1,68 @@
+/* Mohi Brand Colors: Blue #1E3A8A, Gold #FBBF24 */
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+h1 {
+  color: #1E3A8A; /* Mohi Blue */
+}
+
+.stars button {
+  font-size: 30px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: lightgray;
+  transition: color 0.2s;
+}
+
+.stars button:hover,
+.stars button.selected {
+  color: #FBBF24; /* Mohi Gold */
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+button.submit-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #1E3A8A; /* Mohi Blue */
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.submit-btn:hover {
+  background-color: #16316A; /* Darker blue hover */
+}
+
+#thankyou {
+  color: #16A34A; /* Green for success */
+  margin-top: 10px;
+}
