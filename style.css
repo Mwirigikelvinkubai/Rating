@@ -2,26 +2,44 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: #f9f9f9;
+  background: url('background.png') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Gradient overlay to make text readable */
+.overlay {
+  background: rgba(30, 58, 138, 0.6); /* semi-transparent Mohi Blue */
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
 }
 
 .container {
-  background: white;
+  background: rgba(255, 255, 255, 0.95); /* slightly transparent white */
   padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
   text-align: center;
   max-width: 400px;
   width: 90%;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.logo {
+  width: 100px;
+  margin-bottom: 15px;
 }
 
 h1 {
   color: #1E3A8A; /* Mohi Blue */
+  margin-bottom: 10px;
 }
 
 .stars button {
@@ -30,10 +48,13 @@ h1 {
   background: none;
   cursor: pointer;
   color: lightgray;
-  transition: color 0.2s;
+  transition: transform 0.2s, color 0.2s;
 }
 
-.stars button:hover,
+.stars button:hover {
+  transform: scale(1.2);
+}
+
 .stars button.selected {
   color: #FBBF24; /* Mohi Gold */
 }
@@ -56,13 +77,32 @@ button.submit-btn {
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 button.submit-btn:hover {
   background-color: #16316A; /* Darker blue hover */
+  transform: translateY(-2px);
 }
 
 #thankyou {
   color: #16A34A; /* Green for success */
-  margin-top: 10px;
+  margin-top: 15px;
+  font-weight: bold;
+  display: none;
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 12px;
+  color: #f9f9f9;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+  background: rgba(30, 58, 138, 0.85);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }

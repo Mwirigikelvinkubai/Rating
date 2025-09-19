@@ -7,28 +7,44 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Rate My Service</h1>
-    <p>I’d love your feedback!</p>
+  <div class="overlay">
+    <div class="container">
+      <!-- Logo -->
+      <img src="logo.png" alt="Mohi Logo" class="logo">
 
-    <div class="stars">
-      <button data-value="1">★</button>
-      <button data-value="2">★</button>
-      <button data-value="3">★</button>
-      <button data-value="4">★</button>
-      <button data-value="5">★</button>
+      <!-- Title -->
+      <h1>Rate My Service</h1>
+      <p>I’d love your feedback!</p>
+
+      <!-- Star Rating -->
+      <div class="stars">
+        <button data-value="1">★</button>
+        <button data-value="2">★</button>
+        <button data-value="3">★</button>
+        <button data-value="4">★</button>
+        <button data-value="5">★</button>
+      </div>
+
+      <!-- Feedback Form -->
+      <form id="ratingForm" action="https://docs.google.com/forms/d/e/1FAIpQLSceg-c43TV-8Nypmkdu4jzn3nYdpqu7BaeIVlp4onWdfKqV6w/formResponse" method="POST" target="hidden_iframe">
+        <input type="hidden" name="entry.1340388905" id="ratingInput">
+        <textarea name="entry.1203803149" id="comments" placeholder="Your comments here..."></textarea>
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+
+      <!-- Thank You Message -->
+      <p id="thankyou">✅ Thank you for your feedback! Baraka</p>
     </div>
-
-    <form id="ratingForm" action="https://docs.google.com/forms/d/e/1FAIpQLSceg-c43TV-8Nypmkdu4jzn3nYdpqu7BaeIVlp4onWdfKqV6w/formResponse" method="POST" target="hidden_iframe">
-      <input type="hidden" name="entry.1340388905" id="ratingInput">
-      <textarea name="entry.1203803149" id="comments" placeholder="Your comments here..."></textarea>
-      <button type="submit" class="submit-btn">Submit</button>
-    </form>
-
-    <p id="thankyou" style="display:none;">Thank you for your feedback! Baraka</p>
   </div>
 
+  <!-- Hidden iframe to prevent redirect -->
   <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 MOHI | Serving with Excellence</p>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
